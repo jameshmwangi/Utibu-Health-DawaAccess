@@ -116,7 +116,7 @@ class OrderCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: const <Widget>[
           Icon(
-            Icons.calendar_today,
+            Icons.archive,
             color: Colors.white,
             size: 15,
           ),
@@ -131,7 +131,7 @@ class OrderCard extends StatelessWidget {
             width: 20,
           ),
           Icon(
-            Icons.archive,
+            Icons.money,
             color: Colors.white,
             size: 17,
           ),

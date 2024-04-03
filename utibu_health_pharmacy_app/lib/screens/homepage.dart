@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,7 +15,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Map<String, dynamic>> medicationCategories = [
+  
+   List<Map<String, dynamic>> medicationCategories = [
     {
       "icon": FontAwesomeIcons.prescriptionBottle,
       "category": "Syrup",
@@ -41,19 +43,27 @@ class _HomePageState extends State<HomePage> {
     getData();
   }
 
-  Future<void> getData() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    final token = prefs.getString("token") ?? '';
-    if (token.isNotEmpty) {
-      final response = await DioProvider().getMedicationsOrder(token);
+Future<void> getData() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final String token = prefs.getString('token') ?? ''; // Use await here
+  if (token.isNotEmpty) {
+    try {
+      final response = await DioProvider().getMedicationsOrder(token); // Use await here
       if (response != null) {
         setState(() {
           medicationEntries = json.decode(response);
           isLoading = false;
         });
       }
+    } catch (error) {
+      if (kDebugMode) {
+        print('Error fetching data: $error');
+      }
+      
     }
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -86,10 +96,10 @@ class _HomePageState extends State<HomePage> {
                                     medicationCategories[index]['icon'],
                                     color: Colors.white,
                                   ),
-                                  const SizedBox(width: 20),
+                                   const SizedBox(width: 20),
                                   Text(
                                     medicationCategories[index]['category'],
-                                    style: const TextStyle(fontSize: 16, color: Colors.white),
+                                    style: const TextStyle(fontSize: 12, color: Colors.white),
                                   ),
                                 ],
                               ),
