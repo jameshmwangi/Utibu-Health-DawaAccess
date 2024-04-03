@@ -12,7 +12,7 @@ class InventoryEntry extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'inv_id',
         'name',
         'category',
         'price',

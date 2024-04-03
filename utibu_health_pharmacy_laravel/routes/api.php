@@ -11,6 +11,8 @@ use App\Http\Controllers\InventoryController;
 
 
 
+Route::post('/login', [UsersController::class, 'login']);
+Route::post('/register', [UsersController::class, 'register']);
 
 Route::middleware(['auth:sanctum', 'api'])->group(function() {
 

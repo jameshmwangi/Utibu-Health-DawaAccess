@@ -131,7 +131,7 @@ class OrderCard extends StatelessWidget {
             width: 20,
           ),
           Icon(
-            Icons.access_alarm,
+            Icons.archive,
             color: Colors.white,
             size: 17,
           ),

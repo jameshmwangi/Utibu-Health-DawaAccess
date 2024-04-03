@@ -86,7 +86,10 @@ class _SignUpFormState extends State<SignUpForm> {
           Config.spaceSmall,
           Consumer<AuthModel>(
             builder: (context, auth, child) {
-              return ElevatedButton(
+              return Button(
+                width: double.infinity,
+title: 'Sign Up',
+
   onPressed: () async {
     try {
       final userRegistration = await DioProvider().registerUser(
@@ -117,7 +120,7 @@ class _SignUpFormState extends State<SignUpForm> {
       }
     }
   },
-  child: const Text('Sign Up'),
+ disable: false,
 );
 
             },

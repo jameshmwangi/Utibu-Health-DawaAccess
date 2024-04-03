@@ -27,7 +27,7 @@ class InventoryController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
     'category' => 'required|in:capsules,pills,syrup,cream',
-            'category' => 'required|string',
+           
             'price' => 'required|numeric',
             'quantity_in_stock' => 'required|integer',
             'description' => 'nullable|string',

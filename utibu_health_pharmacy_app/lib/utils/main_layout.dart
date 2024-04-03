@@ -49,7 +49,7 @@ class _MainLayoutState extends State<MainLayout> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.solidCalendarCheck),
+            icon: FaIcon(FontAwesomeIcons.prescription),
             label: 'Medication Order',
           ),
         ],
