@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:utibu_health_pharmacy_app/components/button.dart';
 import 'package:utibu_health_pharmacy_app/main.dart';
 import 'package:utibu_health_pharmacy_app/models/auth_model.dart';
@@ -66,24 +69,35 @@ class _LoginFormState extends State<LoginForm> {
                           ))),
           ),
           Config.spaceSmall,
-
-          Consumer<AuthModel>(
-            builder: (context, auth, child) {
-           return  Button(
+          Consumer<AuthModel>(builder: (context, auth, child) {
+            return Button(
               width: double.infinity,
               title: 'Sign In',
-               onPressed: () async {
+              onPressed: () async {
                 final token = await DioProvider()
                     .getToken(_emailController.text, _passController.text);
-               if (token){
-                auth.loginSuccess();
-                MyApp.navigatorKey.currentState!.pushNamed('main');
-               }
-                
+                if (token) {
+                  final SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  final tokenValue = prefs.getString('token') ?? '';
+                  if (tokenValue.isNotEmpty && tokenValue != '') {
+                    //get user data
+                    final response = await DioProvider().getUser(tokenValue);
+                    if (response != null) {
+                      setState(() {
+                        //json decode
+                        Map<String, dynamic> medication = {};
+                        final user = json.decode(response);
+                        auth.loginSuccess(user, medication);
+                        MyApp.navigatorKey.currentState!.pushNamed('main');
+                      });
+                    }
+                  }
+                }
               },
-              disable: false,);
-            
-  }),
+              disable: false,
+            );
+          }),
         ],
       ),
     );

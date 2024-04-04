@@ -8,7 +8,7 @@ class MedsOrderPage extends StatefulWidget {
   State<MedsOrderPage> createState() => _MedsOrderPageState();
 }
 
-enum FilterStatus { upcoming, complete, cancel }
+enum FilterStatus { upcoming, delivered }
 
 class _MedsOrderPageState extends State<MedsOrderPage> {
   FilterStatus status = FilterStatus.upcoming;
@@ -24,14 +24,9 @@ class _MedsOrderPageState extends State<MedsOrderPage> {
       "Medication": "Tricohist",
       "Med_image": 'assets/images/capsules.webp',
       "Category": "Syrup",
-      "status": FilterStatus.complete,
+      "status": FilterStatus.delivered,
     },
-    {
-      "Medication": "Olazapin",
-      "Med_image": 'assets/images/capsules.webp',
-      "Category": "Cream",
-      "status": FilterStatus.cancel,
-    }
+    
   ];
 
   @override
@@ -41,12 +36,10 @@ class _MedsOrderPageState extends State<MedsOrderPage> {
       //   case 'upcoming':
       //     order['status'] = FilterStatus.upcoming;
       //     break;
-      //   case 'complete':
-      //     order['status'] = FilterStatus.complete;
+      //   case 'delivered':
+      //     order['status'] = FilterStatus.delivered;
       //     break;
-      //   case 'cancel':
-      //     order['status'] = FilterStatus.cancel;
-      //     break;
+      //  
       // }
       return order['status'] == status;
       //  == status;
@@ -86,14 +79,10 @@ class _MedsOrderPageState extends State<MedsOrderPage> {
                                   status = FilterStatus.upcoming;
                                   _alignment = Alignment.centerLeft;
                                 } else if (filterStatus ==
-                                    FilterStatus.complete) {
-                                  status = FilterStatus.complete;
+                                    FilterStatus.delivered) {
+                                  status = FilterStatus.delivered;
                                   _alignment = Alignment.center;
-                                } else if (filterStatus ==
-                                    FilterStatus.cancel) {
-                                  status = FilterStatus.cancel;
-                                  _alignment = Alignment.centerRight;
-                                }
+                                } 
                               });
                             },
                             child: Center(
