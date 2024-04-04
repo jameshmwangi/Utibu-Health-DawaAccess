@@ -105,7 +105,7 @@ title: 'Sign Up',
         );
 
         if (token) {
-          auth.loginSuccess({}, {}); // Update login status
+          auth.loginSuccess(); // Update login status
           MyApp.navigatorKey.currentState!.pushNamed('main'); // Redirect to main page
         }
       } else {

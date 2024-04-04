@@ -14,8 +14,8 @@ class InventoryEntrySeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['capsules', 'pills', 'syrup', 'cream']; 
-        $statusOptions = ['delivered', 'pending']; 
+        $categories = ['capsules', 'pills', 'syrup', 'cream']; // Valid categories
+        $statusOptions = ['available', 'out_of_stock']; // Example status options
 
         // Assuming user with ID 2 exists and is an admin
         $adminUserId = 2;
