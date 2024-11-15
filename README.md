@@ -1,4 +1,4 @@
-Hi. login as admin email : admin@utibuhealth credentials : L1nD@Afy0Yak*!  AS A USER test@example.com credentials: password
-Flutter(MOBILE UI) , MySQL(DATABASE), Laravel(BACKEND LOGIC)
-NB. If you run Flutter run and choose a browser debugger: Chrome or Edge, registering a new user will fail. The browser sends a GET request instead of a POST request. 
-use PostMan to check the registration route URL.
+
+The Utibu Medical Health & Pharmaceutical cross-platform application, developed with Flutter, connects users to a comprehensive suite of health and pharmaceutical services. It provides features such as medication tracking, doctor consultations, and an online pharmacy. 
+
+The app ensures accessibility on both iOS and Android, offering a seamless and secure user experience. With a clean and intuitive design, it enables users to manage prescriptions, schedule appointments, and access health resources all in one place, making healthcare more accessible and efficient.
